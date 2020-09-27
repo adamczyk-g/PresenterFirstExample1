@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PresenterFirstExample1.Model;
+using PresenterFirstExample1.Presenter;
 
 namespace PresenterFirstExample1.View
 {
@@ -16,7 +18,12 @@ namespace PresenterFirstExample1.View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            IFormView view = new Form1();
+            IFormModel model = new FormModel();
+            FormPresenter prezenter = new FormPresenter(view, model);
+
+            Application.Run((Form)view);
         }
     }
 }

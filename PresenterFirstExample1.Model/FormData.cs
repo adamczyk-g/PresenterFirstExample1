@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PresenterFirstExample1.Model
 {
-    public class Class1
+    public class FormData
     {
     }
 }

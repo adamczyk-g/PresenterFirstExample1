@@ -53,6 +53,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,6 +77,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PresenterFirstExample1.Model\PresenterFirstExample1.Model.csproj">
+      <Project>{bd9c01e9-8389-45e4-ad79-2faeace271d2}</Project>
+      <Name>PresenterFirstExample1.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PresenterFirstExample1.Presenter\PresenterFirstExample1.Presenter.csproj">
+      <Project>{c2f2b6f9-8d2f-4724-bf1b-abf1b6c2de00}</Project>
+      <Name>PresenterFirstExample1.Presenter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
