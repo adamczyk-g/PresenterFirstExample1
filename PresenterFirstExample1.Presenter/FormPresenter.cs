@@ -32,7 +32,7 @@ namespace PresenterFirstExample1.Presenter
 
             if (validationResult != ValidationResult.Valid)
             {
-                this.ShowValidationError(validationResult); // Determines the message and shows it on the View
+                ShowValidationError(validationResult); // Determines the message and shows it on the View
                 return;
             }
 
@@ -41,7 +41,7 @@ namespace PresenterFirstExample1.Presenter
 
             if (!model.ValidateEmail(email))
             {
-                this.ShowEmailError(email); // Determines the message and shows it on the view
+                ShowEmailError(email); // Determines the message and shows it on the view
                 return;
             }
 

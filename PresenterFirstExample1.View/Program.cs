@@ -19,7 +19,7 @@ namespace PresenterFirstExample1.View
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            IFormView view = new Form1();
+            IFormView view = new FormView();
             IFormModel model = new FormModel();
             FormPresenter prezenter = new FormPresenter(view, model);
 

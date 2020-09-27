@@ -12,9 +12,9 @@ using PresenterFirstExample1.Model;
 
 namespace PresenterFirstExample1.View
 {
-    public partial class Form1 : Form, IFormView
+    public partial class FormView : Form, IFormView
     {
-        public Form1()
+        public FormView()
         {
             InitializeComponent();
         }
