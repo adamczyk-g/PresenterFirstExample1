@@ -40,7 +40,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestClass.cs" />
+    <Compile Include="FormPresenterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

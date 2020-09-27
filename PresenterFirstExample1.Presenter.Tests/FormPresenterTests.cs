@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace PresenterFirstExample1.Presenter.Tests
 {
     [TestFixture]
-    public class TestClass
+    public class FormPresenterTests
     {
         [Test]
         public void TestMethod()
