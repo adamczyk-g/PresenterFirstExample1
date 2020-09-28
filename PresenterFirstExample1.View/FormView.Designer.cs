@@ -52,14 +52,14 @@
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(101, 50);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.firstNameTextBox.Size = new System.Drawing.Size(126, 20);
             this.firstNameTextBox.TabIndex = 1;
             // 
             // lastNameTextBox
             // 
             this.lastNameTextBox.Location = new System.Drawing.Point(101, 76);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.lastNameTextBox.Size = new System.Drawing.Size(126, 20);
             this.lastNameTextBox.TabIndex = 3;
             // 
             // label2
@@ -75,7 +75,7 @@
             // 
             this.emailTextBox.Location = new System.Drawing.Point(101, 102);
             this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(100, 20);
+            this.emailTextBox.Size = new System.Drawing.Size(126, 20);
             this.emailTextBox.TabIndex = 5;
             // 
             // label3
@@ -90,7 +90,7 @@
             // emailError
             // 
             this.emailError.AutoSize = true;
-            this.emailError.Location = new System.Drawing.Point(227, 109);
+            this.emailError.Location = new System.Drawing.Point(45, 177);
             this.emailError.Name = "emailError";
             this.emailError.Size = new System.Drawing.Size(55, 13);
             this.emailError.TabIndex = 6;
@@ -98,7 +98,7 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(101, 155);
+            this.submitButton.Location = new System.Drawing.Point(101, 239);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 7;
@@ -108,7 +108,7 @@
             // formDataError
             // 
             this.formDataError.AutoSize = true;
-            this.formDataError.Location = new System.Drawing.Point(227, 57);
+            this.formDataError.Location = new System.Drawing.Point(45, 155);
             this.formDataError.Name = "formDataError";
             this.formDataError.Size = new System.Drawing.Size(75, 13);
             this.formDataError.TabIndex = 8;
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 344);
+            this.ClientSize = new System.Drawing.Size(284, 344);
             this.Controls.Add(this.formDataError);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.emailError);
@@ -129,7 +129,7 @@
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.label1);
             this.Name = "FormView";
-            this.Text = "Form1";
+            this.Text = "MVP Presenter First Example number 1";
             this.ResumeLayout(false);
             this.PerformLayout();
 

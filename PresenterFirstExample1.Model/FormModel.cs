@@ -16,9 +16,6 @@ namespace PresenterFirstExample1.Model
             if (!DataIsValid(formData.FirstName) || !DataIsValid(formData.LastName))
                 return new ValidationResult("data form is incorrect!", false);
 
-            if (!DataIsValid(formData.FirstName) && DataIsValid(formData.LastName))
-                return new ValidationResult("data form is incorrect!", false);
-
             return new ValidationResult("data is correct", true);
         }
 

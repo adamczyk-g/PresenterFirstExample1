@@ -3,7 +3,6 @@ using PresenterFirstExample1.Model;
 
 namespace PresenterFirstExample1.Model.Tests
 {
-
     [TestFixture]
     public class FormModelTests
     {
@@ -83,6 +82,5 @@ namespace PresenterFirstExample1.Model.Tests
 
             Assert.AreEqual(true, expected);
         }
-
     }
 }
