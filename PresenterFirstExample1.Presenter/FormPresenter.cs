@@ -28,7 +28,7 @@ namespace PresenterFirstExample1.Presenter
 
         void OnSubmit()
         {            
-            FormData formData = view.FormData();
+            FormData formData = view.GetFormData();
             ValidationResult validationResult = model.ValidateFormData(formData);
 
             view.ClearValidationError();
@@ -41,7 +41,7 @@ namespace PresenterFirstExample1.Presenter
 
             Pdf pdf = model.GeneratePdf(formData);
 
-            string email = view.Email();
+            string email = view.GetEmail();
 
             if (!model.ValidateEmail(email))
             {

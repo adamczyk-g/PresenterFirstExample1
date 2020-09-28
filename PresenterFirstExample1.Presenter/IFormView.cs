@@ -9,8 +9,8 @@ namespace PresenterFirstExample1.Presenter
 {
     public interface IFormView
     {
-        FormData FormData();
-        string Email();
+        FormData GetFormData();
+        string GetEmail();
         void DisplayValidationResult(string errorMessage);
         event EventHandler SubmitButtonClick;
         void DisplayEmailError(string text);

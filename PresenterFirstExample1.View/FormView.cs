@@ -24,12 +24,12 @@ namespace PresenterFirstExample1.View
 
         public event EventHandler SubmitButtonClick { add { this.submitButton.Click += new EventHandler(value); } remove { this.submitButton.Click -= new EventHandler(value); } }
      
-        public FormData FormData()
+        public FormData GetFormData()
         {
             return new FormData(firstNameTextBox.Text, lastNameTextBox.Text, emailTextBox.Text);
         }
 
-        public string Email()
+        public string GetEmail()
         {
             return emailTextBox.Text;
         }
