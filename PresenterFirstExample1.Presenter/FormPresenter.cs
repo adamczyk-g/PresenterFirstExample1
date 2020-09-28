@@ -27,9 +27,11 @@ namespace PresenterFirstExample1.Presenter
         }
 
         void OnSubmit()
-        {
+        {            
             FormData formData = view.FormData();
             ValidationResult validationResult = model.ValidateFormData(formData);
+
+            view.ClearValidationError();
 
             if (validationResult.IsValid == false)
             {

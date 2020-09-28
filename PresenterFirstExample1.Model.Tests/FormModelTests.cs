@@ -4,21 +4,6 @@ using PresenterFirstExample1.Model;
 namespace PresenterFirstExample1.Model.Tests
 {
 
-    /*
-     * public ValidationResult ValidateFormData(FormData formData)
-        {
-            if (!DataIsValid(formData.FirstName) && DataIsValid(formData.LastName))
-                return new ValidationResult("data form is incorrect!", false);
-
-            return new ValidationResult("data is correct", true);
-        }
-
-        public Pdf GeneratePdf(FormData formData) { return new Pdf(); }
-        public bool ValidateEmail(string email) { return false; }
-        public void EmailFile(string email, Pdf pdf) { }
-    */
-
-
     [TestFixture]
     public class FormModelTests
     {
@@ -48,7 +33,7 @@ namespace PresenterFirstExample1.Model.Tests
         public void first_name_without_first_capital_letter_is_not_valid()
         {
             FormModel sut = new FormModel();
-            FormData formData = new FormData("firstNameWithoutFirstCapittalLetter", "ProperLastname", string.Empty);
+            FormData formData = new FormData("firstNameWithoutFirstCapittalLetter", "ProperLastName", string.Empty);
 
             bool expected = sut.ValidateFormData(formData).IsValid;
 
@@ -65,5 +50,39 @@ namespace PresenterFirstExample1.Model.Tests
 
             Assert.AreEqual(false, expected);
         }
+
+        [Test]
+        public void first_name_with_non_alphabetic_characters_is_not_valid()
+        {
+            FormModel sut = new FormModel();
+            FormData formData = new FormData("FirstName123", "ProperLastName", string.Empty);
+
+            bool expected = sut.ValidateFormData(formData).IsValid;
+
+            Assert.AreEqual(false, expected);
+        }
+
+        [Test]
+        public void last_name_with_non_alphabetic_characters_is_not_valid()
+        {
+            FormModel sut = new FormModel();
+            FormData formData = new FormData("ProperFirstName", "LastName123", string.Empty);
+
+            bool expected = sut.ValidateFormData(formData).IsValid;
+
+            Assert.AreEqual(false, expected);
+        }
+
+        [Test]
+        public void Proper_first_and_last_name_is_valid()
+        {
+            FormModel sut = new FormModel();
+            FormData formData = new FormData("ProperFirstName", "ProperLastName", string.Empty);
+
+            bool expected = sut.ValidateFormData(formData).IsValid;
+
+            Assert.AreEqual(true, expected);
+        }
+
     }
 }
