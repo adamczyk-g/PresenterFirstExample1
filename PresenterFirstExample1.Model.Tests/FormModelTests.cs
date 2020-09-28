@@ -82,5 +82,15 @@ namespace PresenterFirstExample1.Model.Tests
 
             Assert.AreEqual(true, expected);
         }
+
+        [Test]
+        public void email_without_at_character_is_not_valid()
+        {
+            FormModel sut = new FormModel();
+            string email = "blablagmail.com";
+            bool expected = sut.ValidateEmail(email);
+
+            Assert.AreEqual(false, expected);
+        }
     }
 }
