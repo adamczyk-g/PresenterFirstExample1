@@ -17,12 +17,38 @@ namespace PresenterFirstExample1.View
         public FormView()
         {
             InitializeComponent();
+
+            formDataError.ForeColor = Color.Red;
+            emailError.ForeColor = Color.Red;
         }
 
-        public FormData FormData() { return new FormData(); }
-        public string Email() { return emailAddressTextBox.Text; }
-        public void DisplayValidationResult(ValidationResult result) { throw new NotImplementedException(); }
         public event EventHandler SubmitButtonClick { add { this.submitButton.Click += new EventHandler(value); } remove { this.submitButton.Click -= new EventHandler(value); } }
-        public void ShowEmailError(string text) { emailValidationError.Text = text; }
+     
+        public FormData FormData()
+        {
+            return new FormData(firstNameTextBox.Text, lastNameTextBox.Text, emailTextBox.Text);
+        }
+
+        public string Email()
+        {
+            return emailTextBox.Text;
+        }
+
+        public void DisplayValidationResult(string errorMessage)
+        {
+            formDataError.Text = errorMessage;
+        }
+
+
+        public void DisplayEmailError(string text)
+        {
+            emailError.Text = text;
+        }
+
+        public void ClearValidationError()
+        {
+            formDataError.Text = string.Empty;
+            emailError.Text = string.Empty;
+        }
     }
 }

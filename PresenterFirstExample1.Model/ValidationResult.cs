@@ -6,5 +6,20 @@ using System.Threading.Tasks;
 
 namespace PresenterFirstExample1.Model
 {
-    public enum ValidationResult { Valid };
+    public class ValidationResult
+    {
+        private readonly string message;
+        private readonly bool valid;
+
+        public ValidationResult(string message, bool valid)
+        {
+            this.message = message;
+            this.valid = valid;
+        }
+
+
+        public string ErrorMessage => message;
+        public bool IsValid => valid;
+
+    };
 }

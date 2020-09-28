@@ -11,8 +11,9 @@ namespace PresenterFirstExample1.Presenter
     {
         FormData FormData();
         string Email();
-        void DisplayValidationResult(ValidationResult result);
+        void DisplayValidationResult(string errorMessage);
         event EventHandler SubmitButtonClick;
-        void ShowEmailError(string text);
+        void DisplayEmailError(string text);
+        void ClearValidationError();
     }
 }

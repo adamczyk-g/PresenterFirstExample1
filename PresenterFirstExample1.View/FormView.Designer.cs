@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.firstNameTextBox = new System.Windows.Forms.TextBox();
+            this.lastNameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.emailAddressTextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.emailValidationError = new System.Windows.Forms.Label();
+            this.emailError = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.formDataError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -49,19 +48,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "first name";
             // 
-            // textBox1
+            // firstNameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(101, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.firstNameTextBox.Location = new System.Drawing.Point(101, 50);
+            this.firstNameTextBox.Name = "firstNameTextBox";
+            this.firstNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.firstNameTextBox.TabIndex = 1;
             // 
-            // textBox2
+            // lastNameTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(101, 76);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
+            this.lastNameTextBox.Location = new System.Drawing.Point(101, 76);
+            this.lastNameTextBox.Name = "lastNameTextBox";
+            this.lastNameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.lastNameTextBox.TabIndex = 3;
             // 
             // label2
             // 
@@ -72,12 +71,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "last name";
             // 
-            // emailAddressTextBox
+            // emailTextBox
             // 
-            this.emailAddressTextBox.Location = new System.Drawing.Point(101, 102);
-            this.emailAddressTextBox.Name = "emailAddressTextBox";
-            this.emailAddressTextBox.Size = new System.Drawing.Size(100, 20);
-            this.emailAddressTextBox.TabIndex = 5;
+            this.emailTextBox.Location = new System.Drawing.Point(101, 102);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(100, 20);
+            this.emailTextBox.TabIndex = 5;
             // 
             // label3
             // 
@@ -88,14 +87,14 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "email";
             // 
-            // emailValidationError
+            // emailError
             // 
-            this.emailValidationError.AutoSize = true;
-            this.emailValidationError.Location = new System.Drawing.Point(227, 109);
-            this.emailValidationError.Name = "emailValidationError";
-            this.emailValidationError.Size = new System.Drawing.Size(55, 13);
-            this.emailValidationError.TabIndex = 6;
-            this.emailValidationError.Text = "email error";
+            this.emailError.AutoSize = true;
+            this.emailError.Location = new System.Drawing.Point(227, 109);
+            this.emailError.Name = "emailError";
+            this.emailError.Size = new System.Drawing.Size(55, 13);
+            this.emailError.TabIndex = 6;
+            this.emailError.Text = "email error";
             // 
             // submitButton
             // 
@@ -106,40 +105,30 @@
             this.submitButton.Text = "Submit";
             this.submitButton.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // formDataError
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(227, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "first name error";
+            this.formDataError.AutoSize = true;
+            this.formDataError.Location = new System.Drawing.Point(227, 57);
+            this.formDataError.Name = "formDataError";
+            this.formDataError.Size = new System.Drawing.Size(75, 13);
+            this.formDataError.TabIndex = 8;
+            this.formDataError.Text = "form data error";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(227, 83);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "last name error";
-            // 
-            // Form1
+            // FormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(432, 344);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.formDataError);
             this.Controls.Add(this.submitButton);
-            this.Controls.Add(this.emailValidationError);
-            this.Controls.Add(this.emailAddressTextBox);
+            this.Controls.Add(this.emailError);
+            this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "FormView";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -149,15 +138,14 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox firstNameTextBox;
+        private System.Windows.Forms.TextBox lastNameTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox emailAddressTextBox;
+        private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label emailValidationError;
+        private System.Windows.Forms.Label emailError;
         private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label formDataError;
     }
 }
 

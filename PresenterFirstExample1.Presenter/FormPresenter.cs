@@ -18,6 +18,7 @@ namespace PresenterFirstExample1.Presenter
             this.model = model;
 
             this.view.SubmitButtonClick += OnSubmitButtonClick;
+            this.view.ClearValidationError();
         }
 
         private void OnSubmitButtonClick(object obj, EventArgs e)
@@ -30,13 +31,14 @@ namespace PresenterFirstExample1.Presenter
             FormData formData = view.FormData();
             ValidationResult validationResult = model.ValidateFormData(formData);
 
-            if (validationResult != ValidationResult.Valid)
+            if (validationResult.IsValid == false)
             {
                 ShowValidationError(validationResult); // Determines the message and shows it on the View
                 return;
             }
 
             Pdf pdf = model.GeneratePdf(formData);
+
             string email = view.Email();
 
             if (!model.ValidateEmail(email))
@@ -50,12 +52,12 @@ namespace PresenterFirstExample1.Presenter
 
         private void ShowValidationError(ValidationResult result)
         {
-
+            view.DisplayValidationResult("data form incorrect!");
         }
 
         private void ShowEmailError(string email)
         {
-            view.ShowEmailError("email address is incorrect!");
+            view.DisplayEmailError("email address is incorrect!");
         }
     }
 }

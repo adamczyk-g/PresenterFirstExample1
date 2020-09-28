@@ -13,23 +13,24 @@ namespace PresenterFirstExample1.Presenter.Tests
             private string emailValidationError;
             private string emailAddress;
 
-            public FormData FormData() { return new FormData(); }
+            public FormData FormData() { return new FormData("","",""); }
             public string Email() { return emailAddress; }
-            public void DisplayValidationResult(ValidationResult result) { }
+            public void DisplayValidationResult(string errorMessage) { }
             public event EventHandler SubmitButtonClick;
-            public void ShowEmailError(string text) { emailValidationError = text; }
+            public void DisplayEmailError(string text) { emailValidationError = text; }
 
             public void SetEmailAdressForTest(string text) { emailAddress = text; }
             public void SimulateSubmitButtonClick() { SubmitButtonClick.Invoke(this, null); }
             public string GetEmailValidatorErrorForTest() { return emailValidationError; }
+            public void ClearValidationError() { }
         }
 
         public class FormModelMock : IFormModel
         {
-            public ValidationResult ValidateFormData(FormData formData) { return new ValidationResult(); }
+            public ValidationResult ValidateFormData(FormData formData) { return new ValidationResult("data is correct", true); }
             public Pdf GeneratePdf(FormData formData) { return new Pdf(); }
             public bool ValidateEmail(string email) { return false; }
-            public void EmailFile(string email, Pdf pdf) {; }
+            public void EmailFile(string email, Pdf pdf) { }            
         }
 
         [Test]

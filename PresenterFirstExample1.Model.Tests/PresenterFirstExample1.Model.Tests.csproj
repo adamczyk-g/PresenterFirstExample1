@@ -45,6 +45,12 @@
   <ItemGroup>
     <Compile Include="FormModelTests.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PresenterFirstExample1.Model\PresenterFirstExample1.Model.csproj">
+      <Project>{bd9c01e9-8389-45e4-ad79-2faeace271d2}</Project>
+      <Name>PresenterFirstExample1.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
