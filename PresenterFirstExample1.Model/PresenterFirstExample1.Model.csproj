@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmailValidator.cs" />
+    <Compile Include="NameValidator.cs" />
+    <Compile Include="INameValidator.cs" />
+    <Compile Include="SystemNetEmailValidator.cs" />
     <Compile Include="FormData.cs" />
     <Compile Include="FormModel.cs" />
     <Compile Include="IEmailValidator.cs" />

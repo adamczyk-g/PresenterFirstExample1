@@ -7,7 +7,7 @@ using System.Net.Mail;
 
 namespace PresenterFirstExample1.Model
 {
-    class SystemNetEmailValidator : IEmailValidator
+    public class SystemNetEmailValidator : IEmailValidator
     {
         public SystemNetEmailValidator()
         {

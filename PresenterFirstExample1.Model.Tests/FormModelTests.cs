@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using PresenterFirstExample1.Model;
+using Moq;
 
 namespace PresenterFirstExample1.Model.Tests
 {
@@ -7,91 +8,48 @@ namespace PresenterFirstExample1.Model.Tests
     public class FormModelTests
     {
         [Test]
-        public void Empty_first_name_is_not_valid()
+        public void Form_model_with_invalid_email_return_email_validation_error()
         {
-            FormModel sut = new FormModel();
-            FormData formData = new FormData(string.Empty, "LastName", string.Empty);
+            bool expected = false;
+            var nameValidator = new Mock<INameValidator>();
+            var emailValidator = new Mock<IEmailValidator>();
+            IFormModel model = new FormModel(emailValidator.Object, nameValidator.Object);
+            nameValidator.Setup(mock => mock.isValid(It.IsAny<string>())).Returns(true);
+            emailValidator.Setup(mock => mock.IsValid(It.IsAny<string>())).Returns(expected);            
 
-            bool expected = sut.ValidateFormData(formData).IsValid;
-
-            Assert.AreEqual(false, expected);
+            bool actual = model.ValidateEmail("");
+            
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        public void Empty_last_name_is_not_valid()
+        public void Form_model_with_proper_email_return_no_validation_error()
         {
-            FormModel sut = new FormModel();
-            FormData formData = new FormData("FirstName", string.Empty, string.Empty);
+            bool expected = true;
+            var nameValidator = new Mock<INameValidator>();
+            var emailValidator = new Mock<IEmailValidator>();
+            IFormModel model = new FormModel(emailValidator.Object, nameValidator.Object);
+            nameValidator.Setup(mock => mock.isValid(It.IsAny<string>())).Returns(true);
+            emailValidator.Setup(mock => mock.IsValid(It.IsAny<string>())).Returns(expected);
+            
+            bool actual = model.ValidateEmail("");
 
-            bool expected = sut.ValidateFormData(formData).IsValid;
-
-            Assert.AreEqual(false, expected);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        public void first_name_without_first_capital_letter_is_not_valid()
+        public void Form_model_with_invalid_name_return_validation_error()
         {
-            FormModel sut = new FormModel();
-            FormData formData = new FormData("firstNameWithoutFirstCapittalLetter", "ProperLastName", string.Empty);
+            bool expected = false;
+            var nameValidator = new Mock<INameValidator>();
+            var emailValidator = new Mock<IEmailValidator>();
+            IFormModel model = new FormModel(emailValidator.Object, nameValidator.Object);
+            nameValidator.Setup(mock => mock.isValid(It.IsAny<string>())).Returns(expected);
+            emailValidator.Setup(mock => mock.IsValid(It.IsAny<string>())).Returns(true);
 
-            bool expected = sut.ValidateFormData(formData).IsValid;
+            bool actual = model.ValidateFormData(new FormData("","","")).IsValid;
 
-            Assert.AreEqual(false, expected);
-        }
-
-        [Test]
-        public void last_name_without_first_capital_letter_is_not_valid()
-        {
-            FormModel sut = new FormModel();
-            FormData formData = new FormData("ProperFirstName", "lastNameWithoutFirstCapittalLetter", string.Empty);
-
-            bool expected = sut.ValidateFormData(formData).IsValid;
-
-            Assert.AreEqual(false, expected);
-        }
-
-        [Test]
-        public void first_name_with_non_alphabetic_characters_is_not_valid()
-        {
-            FormModel sut = new FormModel();
-            FormData formData = new FormData("FirstName123", "ProperLastName", string.Empty);
-
-            bool expected = sut.ValidateFormData(formData).IsValid;
-
-            Assert.AreEqual(false, expected);
-        }
-
-        [Test]
-        public void last_name_with_non_alphabetic_characters_is_not_valid()
-        {
-            FormModel sut = new FormModel();
-            FormData formData = new FormData("ProperFirstName", "LastName123", string.Empty);
-
-            bool expected = sut.ValidateFormData(formData).IsValid;
-
-            Assert.AreEqual(false, expected);
-        }
-
-        [Test]
-        public void Proper_first_and_last_name_is_valid()
-        {
-            FormModel sut = new FormModel();
-            FormData formData = new FormData("ProperFirstName", "ProperLastName", string.Empty);
-
-            bool expected = sut.ValidateFormData(formData).IsValid;
-
-            Assert.AreEqual(true, expected);
-        }
-
-        [Test]
-        public void email_without_at_character_is_not_valid()
-        {
-            IEmailValidator = 
-            FormModel sut = new FormModel(I);
-            string email = "blablagmail.com";
-            bool expected = sut.ValidateEmail(email);
-
-            Assert.AreEqual(false, expected);
+            Assert.AreEqual(expected, actual);
         }
     }
 }

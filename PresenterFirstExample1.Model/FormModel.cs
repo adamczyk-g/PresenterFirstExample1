@@ -10,15 +10,17 @@ namespace PresenterFirstExample1.Model
     public class FormModel : IFormModel
     {
         private readonly IEmailValidator emailValidator;
+        private readonly INameValidator nameValidator;
 
-        public FormModel(IEmailValidator emailValidator)
+        public FormModel(IEmailValidator emailValidator, INameValidator nameValidator)
         {
             this.emailValidator = emailValidator;
+            this.nameValidator = nameValidator;
         }
 
         public ValidationResult ValidateFormData(FormData formData)
         {
-            if (!DataIsValid(formData.FirstName) || !DataIsValid(formData.LastName))
+            if (!nameValidator.isValid(formData.FirstName) || !nameValidator.isValid(formData.LastName))
                 return new ValidationResult("data form is incorrect!", false);
 
             return new ValidationResult("data is correct", true);
@@ -27,10 +29,5 @@ namespace PresenterFirstExample1.Model
         public Pdf GeneratePdf(FormData formData) { return new Pdf(); }
         public bool ValidateEmail(string email) { return emailValidator.IsValid(email); }
         public void EmailFile(string email, Pdf pdf) { }
-
-        private bool DataIsValid(string data)
-        {
-            return Regex.Match(data, "^[A-Z][a-zA-Z]+$").Success;
-        }
     }
 }
