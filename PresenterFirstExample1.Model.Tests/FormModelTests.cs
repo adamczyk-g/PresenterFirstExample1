@@ -86,7 +86,8 @@ namespace PresenterFirstExample1.Model.Tests
         [Test]
         public void email_without_at_character_is_not_valid()
         {
-            FormModel sut = new FormModel();
+            IEmailValidator = 
+            FormModel sut = new FormModel(I);
             string email = "blablagmail.com";
             bool expected = sut.ValidateEmail(email);
 

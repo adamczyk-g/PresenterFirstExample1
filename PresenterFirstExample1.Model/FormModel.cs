@@ -9,7 +9,12 @@ namespace PresenterFirstExample1.Model
 {
     public class FormModel : IFormModel
     {
-        public FormModel() { }
+        private readonly IEmailValidator emailValidator;
+
+        public FormModel(IEmailValidator emailValidator)
+        {
+            this.emailValidator = emailValidator;
+        }
 
         public ValidationResult ValidateFormData(FormData formData)
         {
@@ -20,7 +25,7 @@ namespace PresenterFirstExample1.Model
         }
 
         public Pdf GeneratePdf(FormData formData) { return new Pdf(); }
-        public bool ValidateEmail(string email) { return false; }
+        public bool ValidateEmail(string email) { return emailValidator.IsValid(email); }
         public void EmailFile(string email, Pdf pdf) { }
 
         private bool DataIsValid(string data)

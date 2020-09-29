@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmailValidator.cs" />
     <Compile Include="FormData.cs" />
     <Compile Include="FormModel.cs" />
+    <Compile Include="IEmailValidator.cs" />
     <Compile Include="IFormModel.cs" />
     <Compile Include="Pdf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
