@@ -14,11 +14,11 @@ namespace PresenterFirstExample1.Presenter.Tests
             var viewMock = new Mock<IFormView>();
             var modelMock = new Mock<IFormModel>();
             FormPresenter sut = new FormPresenter(viewMock.Object, modelMock.Object);
-            modelMock.Setup(x => x.ValidateFormData(It.IsAny<FormData>())).Returns(new ValidationResult("", false));
+            modelMock.Setup(model => model.ValidateFormData(It.IsAny<FormData>())).Returns(new ValidationResult("", false));
             string actual = string.Empty;
-            viewMock.Setup(mock => mock.DisplayValidationResult(It.IsAny<string>())).Callback<string>((param) => { actual = param; });
+            viewMock.Setup(view => view.DisplayValidationResult(It.IsAny<string>())).Callback<string>((param) => { actual = param; });
 
-            viewMock.Raise(x => x.SubmitButtonClick += null, new EventArgs());
+            viewMock.Raise(view => view.SubmitButtonClick += null, new EventArgs());
 
             Assert.AreEqual("data form incorrect!", actual);
         }
@@ -29,12 +29,12 @@ namespace PresenterFirstExample1.Presenter.Tests
             var viewMock = new Mock<IFormView>();
             var modelMock = new Mock<IFormModel>();
             FormPresenter sut = new FormPresenter(viewMock.Object, modelMock.Object);
-            modelMock.Setup(x => x.ValidateFormData(It.IsAny<FormData>())).Returns(new ValidationResult("", true));
-            modelMock.Setup(x => x.ValidateEmail(It.IsAny<string>())).Returns(false);
+            modelMock.Setup(model => model.ValidateFormData(It.IsAny<FormData>())).Returns(new ValidationResult("", true));
+            modelMock.Setup(model => model.ValidateEmail(It.IsAny<string>())).Returns(false);
             string actual = string.Empty;
-            viewMock.Setup(p => p.DisplayEmailError(It.IsAny<string>())).Callback<string>((p) => { actual = p; });
+            viewMock.Setup(view => view.DisplayEmailError(It.IsAny<string>())).Callback<string>((param) => { actual = param; });
 
-            viewMock.Raise(x => x.SubmitButtonClick += null, new EventArgs());
+            viewMock.Raise(view => view.SubmitButtonClick += null, new EventArgs());
 
             Assert.AreEqual("email address is incorrect!", actual);
         }    
