@@ -11,6 +11,6 @@ namespace PresenterFirstExample1.Model
         ValidationResult ValidateFormData(FormData formData);
         Pdf GeneratePdf(FormData formData);
         bool ValidateEmail(string email);
-        void EmailFile(string email, Pdf pdf);
+        void EmailFile(string smtpHost, string email, Pdf pdf);
     }
 }

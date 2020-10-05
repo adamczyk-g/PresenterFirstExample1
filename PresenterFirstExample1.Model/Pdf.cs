@@ -8,5 +8,13 @@ namespace PresenterFirstExample1.Model
 {
     public class Pdf
     {
+        private readonly string pathToFile;
+
+        public Pdf(string pathToFile)
+        {
+            this.pathToFile = pathToFile;
+        }
+
+        public string PathToFile { get { return pathToFile; } }
     }
 }
