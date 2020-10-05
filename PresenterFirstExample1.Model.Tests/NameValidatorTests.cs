@@ -15,7 +15,7 @@ namespace PresenterFirstExample1.Model.Tests
 
             bool actual = sut.isValid(name);
 
-            Assert.AreEqual(expected, actual);  
+            Assert.AreEqual(expected, actual);   
         }
 
         [Test]
