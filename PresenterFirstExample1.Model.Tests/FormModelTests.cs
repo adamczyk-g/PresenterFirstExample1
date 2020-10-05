@@ -47,7 +47,7 @@ namespace PresenterFirstExample1.Model.Tests
             nameValidator.Setup(mock => mock.isValid(It.IsAny<string>())).Returns(expected);
             emailValidator.Setup(mock => mock.IsValid(It.IsAny<string>())).Returns(true);
 
-            bool actual = model.ValidateFormData(new FormData("","","")).IsValid;
+            bool actual = model.ValidateFormData(new FormData("","","","")).IsValid;
 
             Assert.AreEqual(expected, actual);
         }

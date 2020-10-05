@@ -15,5 +15,6 @@ namespace PresenterFirstExample1.Presenter
         event EventHandler SubmitButtonClick;
         void DisplayEmailError(string text);
         void ClearValidationError();
+        string GetSmtpHost();
     }
 }

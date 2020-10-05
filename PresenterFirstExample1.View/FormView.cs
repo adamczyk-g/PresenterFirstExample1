@@ -26,12 +26,17 @@ namespace PresenterFirstExample1.View
      
         public FormData GetFormData()
         {
-            return new FormData(firstNameTextBox.Text, lastNameTextBox.Text, emailTextBox.Text);
+            return new FormData(firstNameTextBox.Text, lastNameTextBox.Text, emailTextBox.Text, smtpTextBox.Text);
         }
 
         public string GetEmail()
         {
             return emailTextBox.Text;
+        }
+
+        public string GetSmtpHost()
+        {
+            return smtpTextBox.Text;
         }
 
         public void DisplayValidationResult(string errorMessage)

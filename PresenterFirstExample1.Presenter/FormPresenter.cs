@@ -49,7 +49,7 @@ namespace PresenterFirstExample1.Presenter
                 return;
             }
 
-            model.EmailFile(email, pdf);
+            model.EmailFile(view.GetSmtpHost(), email, pdf);
         }
 
         private void ShowValidationError(ValidationResult result)

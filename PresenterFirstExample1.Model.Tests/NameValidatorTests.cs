@@ -9,13 +9,13 @@ namespace PresenterFirstExample1.Model.Tests
         [Test]
         public void Empty_name_is_not_valid()
         {
-            INameValidator sut = new NameValidator(); 
+            INameValidator sut = new NameValidator();
             string name = string.Empty;
             bool expected = false;
 
             bool actual = sut.isValid(name);
 
-            Assert.AreEqual(expected, actual);   
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
