@@ -9,7 +9,7 @@ namespace PresenterFirstExample1.Model.Tests
         [Test]
         public void Empty_name_is_not_valid()
         {
-            INameValidator sut = new NameValidator();
+            INameValidator sut = new NameValidator(); 
             string name = string.Empty;
             bool expected = false;
 
