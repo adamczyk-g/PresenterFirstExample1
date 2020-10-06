@@ -39,12 +39,13 @@
             this.formDataError = new System.Windows.Forms.Label();
             this.smtpTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.formDescription = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 53);
+            this.label1.Location = new System.Drawing.Point(47, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 0;
@@ -52,14 +53,14 @@
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(110, 50);
+            this.firstNameTextBox.Location = new System.Drawing.Point(112, 83);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(126, 20);
             this.firstNameTextBox.TabIndex = 1;
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(110, 83);
+            this.lastNameTextBox.Location = new System.Drawing.Point(112, 116);
             this.lastNameTextBox.Name = "lastNameTextBox";
             this.lastNameTextBox.Size = new System.Drawing.Size(126, 20);
             this.lastNameTextBox.TabIndex = 3;
@@ -67,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 86);
+            this.label2.Location = new System.Drawing.Point(47, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 2;
@@ -75,7 +76,7 @@
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Location = new System.Drawing.Point(110, 116);
+            this.emailTextBox.Location = new System.Drawing.Point(112, 149);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(126, 20);
             this.emailTextBox.TabIndex = 5;
@@ -83,7 +84,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(45, 119);
+            this.label3.Location = new System.Drawing.Point(47, 152);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 4;
@@ -92,7 +93,7 @@
             // emailError
             // 
             this.emailError.AutoSize = true;
-            this.emailError.Location = new System.Drawing.Point(45, 198);
+            this.emailError.Location = new System.Drawing.Point(47, 231);
             this.emailError.Name = "emailError";
             this.emailError.Size = new System.Drawing.Size(55, 13);
             this.emailError.TabIndex = 6;
@@ -100,7 +101,7 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(109, 241);
+            this.submitButton.Location = new System.Drawing.Point(111, 274);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(75, 23);
             this.submitButton.TabIndex = 7;
@@ -110,7 +111,7 @@
             // formDataError
             // 
             this.formDataError.AutoSize = true;
-            this.formDataError.Location = new System.Drawing.Point(45, 182);
+            this.formDataError.Location = new System.Drawing.Point(47, 215);
             this.formDataError.Name = "formDataError";
             this.formDataError.Size = new System.Drawing.Size(75, 13);
             this.formDataError.TabIndex = 8;
@@ -118,7 +119,7 @@
             // 
             // smtpTextBox
             // 
-            this.smtpTextBox.Location = new System.Drawing.Point(110, 149);
+            this.smtpTextBox.Location = new System.Drawing.Point(112, 182);
             this.smtpTextBox.Name = "smtpTextBox";
             this.smtpTextBox.Size = new System.Drawing.Size(126, 20);
             this.smtpTextBox.TabIndex = 10;
@@ -126,17 +127,28 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(45, 152);
+            this.label4.Location = new System.Drawing.Point(47, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "smtp server";
             // 
+            // formDescription
+            // 
+            this.formDescription.AutoSize = true;
+            this.formDescription.Location = new System.Drawing.Point(12, 9);
+            this.formDescription.Name = "formDescription";
+            this.formDescription.Size = new System.Drawing.Size(479, 13);
+            this.formDescription.TabIndex = 11;
+            this.formDescription.Text = "This is a form for demonstration purpose only with simple validation and without " +
+    "proper error handling ";
+            // 
             // FormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 300);
+            this.ClientSize = new System.Drawing.Size(516, 357);
+            this.Controls.Add(this.formDescription);
             this.Controls.Add(this.smtpTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.formDataError);
@@ -168,6 +180,7 @@
         private System.Windows.Forms.Label formDataError;
         private System.Windows.Forms.TextBox smtpTextBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label formDescription;
     }
 }
 
