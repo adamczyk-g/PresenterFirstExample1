@@ -136,7 +136,7 @@
             // formDescription
             // 
             this.formDescription.AutoSize = true;
-            this.formDescription.Location = new System.Drawing.Point(12, 9);
+            this.formDescription.Location = new System.Drawing.Point(12, 16);
             this.formDescription.Name = "formDescription";
             this.formDescription.Size = new System.Drawing.Size(479, 13);
             this.formDescription.TabIndex = 11;
