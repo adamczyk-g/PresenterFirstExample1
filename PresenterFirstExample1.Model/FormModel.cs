@@ -22,16 +22,19 @@ namespace PresenterFirstExample1.Model
             this.formValidator = formValidator;
         }
 
-        public FormValidationResult ValidateFormData(FormData formData, EmailData emailData)
+        public FormValidationResult ValidateForm(FormData formData, EmailData emailData)
         {
             return formValidator.Validate(formData, emailData);
         }
 
-        public FormData GetDefaultFormData()
+        public FormData DefaultFormData
         {
-            return new FormData("John", "Smith", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod " +
-                "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco" +
-                " laboris nisi ut aliquip ex ea commodo consequat.");
+            get
+            {
+                return new FormData("John", "Smith", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod " +
+                    "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco" +
+                    " laboris nisi ut aliquip ex ea commodo consequat.");
+            }
         }
 
         public Pdf GeneratePdf(FormData formData)

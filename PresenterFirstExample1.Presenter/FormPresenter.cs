@@ -18,19 +18,19 @@ namespace PresenterFirstExample1.Presenter
             this.model = model;
 
             this.view.SubmitButtonClick += OnSubmitButtonClick;
-            view.ViewLoad += OnViewLoad;
-            this.view.ClearValidationError();
+            view.ViewLoad += OnViewLoad;            
         }
+
         private void OnViewLoad(object obj, EventArgs e)
         {
-            view.SetDefaultData(model.GetDefaultFormData());
+            view.SetDefaultData(model.DefaultFormData);
         }
 
         private void OnSubmitButtonClick(object obj, EventArgs e)
         {
             FormData formData = view.FormData;
             EmailData emailData = view.EmailData;
-            FormValidationResult validationResult = model.ValidateFormData(formData, emailData);
+            FormValidationResult validationResult = model.ValidateForm(formData, emailData);
 
             view.ClearValidationError();
 
