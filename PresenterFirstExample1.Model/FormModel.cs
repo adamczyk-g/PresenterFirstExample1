@@ -27,6 +27,13 @@ namespace PresenterFirstExample1.Model
             return formValidator.Validate(formData, emailData);
         }
 
+        public FormData GetDefaultFormData()
+        {
+            return new FormData("John", "Smith", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod " +
+                "tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco" +
+                " laboris nisi ut aliquip ex ea commodo consequat.");
+        }
+
         public Pdf GeneratePdf(FormData formData)
         {
             string text = "first name: " + formData.FirstName + Environment.NewLine + Environment.NewLine +

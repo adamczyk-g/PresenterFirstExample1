@@ -18,7 +18,12 @@ namespace PresenterFirstExample1.Presenter
             this.model = model;
 
             this.view.SubmitButtonClick += OnSubmitButtonClick;
+            view.ViewLoad += OnViewLoad;
             this.view.ClearValidationError();
+        }
+        private void OnViewLoad(object obj, EventArgs e)
+        {
+            view.SetDefaultData(model.GetDefaultFormData());
         }
 
         private void OnSubmitButtonClick(object obj, EventArgs e)

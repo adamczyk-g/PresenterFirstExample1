@@ -18,16 +18,23 @@ namespace PresenterFirstExample1.View
         public EmailData EmailData { get { return new EmailData( emailTextBox.Text, smtpTextBox.Text); } }
 
         public event EventHandler SubmitButtonClick;
+        public event EventHandler ViewLoad;
 
         public FormView()
         {
             InitializeComponent();
-            this.submitButton.Click += OnSubmitButtonClick;
+            submitButton.Click += OnSubmitButtonClick;
+            this.Load += FormView_Load;
         }
 
         private void OnSubmitButtonClick(object sender, EventArgs e)
         {
             SubmitButtonClick.Invoke(sender, EventArgs.Empty);
+        }
+
+        private void FormView_Load(object sender, EventArgs e)
+        {
+            ViewLoad.Invoke(sender, EventArgs.Empty);
         }
 
         public void DisplayValidationResult(IEnumerable<string> errorMessage)
@@ -44,15 +51,13 @@ namespace PresenterFirstExample1.View
         {
             validationErrors.DataSource = new List<string>();
             sendingErrors.Text = string.Empty;
-        }       
+        }
 
-        private void FormView_Load(object sender, EventArgs e)
+        public void SetDefaultData(FormData formData)
         {
-            firstNameTextBox.Text = "John";
-            lastNameTextBox.Text = "Smith";
-            commentsTextBox.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-            emailTextBox.Text = "gadamczyk@mops.katowice.pl";
-            smtpTextBox.Text = "mail.mops.katowice.pl";
+            firstNameTextBox.Text = formData.FirstName;
+            lastNameTextBox.Text = formData.LastName;
+            commentsTextBox.Text = formData.Comments;
         }
     }
 }

@@ -14,6 +14,9 @@ namespace PresenterFirstExample1.Presenter
         void DisplayValidationResult(IEnumerable<string> errorMessage);
         void DisplayEmailError(string text);
         void ClearValidationError();
+        void SetDefaultData(FormData formData);
+
         event EventHandler SubmitButtonClick;
+        event EventHandler ViewLoad;
     }
 }
