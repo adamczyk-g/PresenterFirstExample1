@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PresenterFirstExample1.Model
+﻿namespace PresenterFirstExample1.Model
 {
     public interface IFormModel
     {
-        ValidationResult ValidateFormData(FormData formData);
+        FormValidationResult ValidateFormData(FormData formData, EmailData emailData);
         Pdf GeneratePdf(FormData formData);
-        bool ValidateEmail(string email);
-        void EmailFile(string smtpHost, string email, Pdf pdf);
+        EmailSendingResult EmailFile(EmailData email, Pdf pdf);
     }
 }

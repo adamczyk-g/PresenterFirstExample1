@@ -15,39 +15,24 @@ namespace PresenterFirstExample1.Model
 {
     public class FormModel : IFormModel
     {
-        private readonly IEmailValidator emailValidator;
-        private readonly INameValidator nameValidator;
+        private readonly IFormValidator formValidator;
 
-        public FormModel(IEmailValidator emailValidator, INameValidator nameValidator)
+        public FormModel(IFormValidator formValidator)
         {
-            this.emailValidator = emailValidator;
-            this.nameValidator = nameValidator;
+            this.formValidator = formValidator;
         }
 
-        public ValidationResult ValidateFormData(FormData formData)
+        public FormValidationResult ValidateFormData(FormData formData, EmailData emailData)
         {
-            if (!nameValidator.isValid(formData.FirstName) || !nameValidator.isValid(formData.LastName))
-                return new ValidationResult("data form is incorrect!", false);
-
-            return new ValidationResult("data is correct", true);
+            return formValidator.Validate(formData, emailData);
         }
-        
-        public bool ValidateEmail(string email) { return emailValidator.IsValid(email); }
 
         public Pdf GeneratePdf(FormData formData)
         {
-            /*
-            PdfDocument pdfDoc = new PdfDocument();
-            PdfPage pdfPage = pdfDoc.AddPage();
-            XGraphics graph = XGraphics.FromPdfPage(pdfPage);
-            XFont font = new XFont("Verdana", 12, XFontStyle.Bold);
-            graph.DrawString("This is my first PDF document" + Environment.NewLine + "ds fdsf dsf sdfsdfds", font, XBrushes.Black, new XRect(0, 0, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-            */
+            string text = "first name: " + formData.FirstName + Environment.NewLine + Environment.NewLine +
+                "last name: " + formData.LastName + Environment.NewLine + Environment.NewLine +
+                "comments: " + formData.Comments + Environment.NewLine;
 
-            string text = "first name: " + formData.FirstName + Environment.NewLine + 
-                "last name: " + formData.LastName + Environment.NewLine +
-                "email address: " + formData.Email + Environment.NewLine +
-                "smtp server: " + formData.SmtpServer;
 
             PdfDocument document = new PdfDocument();
 
@@ -65,19 +50,32 @@ namespace PresenterFirstExample1.Model
             return new Pdf("myDocument.pdf");
         }
 
-        public void EmailFile(string smtpHost, string email, Pdf pdf)
+        public EmailSendingResult EmailFile(EmailData email, Pdf pdf)
         {
             string emailFrom = "notify@mvptest.com.pl";
-            string displayName = "PresenterFirst example 1";
-            
-            SmtpClient client = new SmtpClient(smtpHost);
+            string displayName = "PresenterFirst_example_1";
+
+            EmailSendingResult emailError = new EmailSendingResult(string.Empty);
+
+            SmtpClient client = new SmtpClient(email.SmtpHost);
             MailAddress from = new MailAddress(emailFrom, displayName, System.Text.Encoding.UTF8);
-            MailAddress to = new MailAddress(email);
+            MailAddress to = new MailAddress(email.ToAddress);
             MailMessage message = new MailMessage(from, to);
             message.Body = "This is a test email message sent by an application.";
             message.Attachments.Add(new Attachment(pdf.PathToFile));
-            client.Send(message);            
+
+            try
+            {
+                client.Send(message);
+            }
+            catch (Exception e)
+            {
+                emailError = new EmailSendingResult(e.Message);
+            }
+
             message.Dispose();
+
+            return emailError;
         }
     }
 }

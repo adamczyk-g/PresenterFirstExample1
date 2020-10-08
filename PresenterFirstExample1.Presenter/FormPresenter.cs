@@ -23,43 +23,23 @@ namespace PresenterFirstExample1.Presenter
 
         private void OnSubmitButtonClick(object obj, EventArgs e)
         {
-            OnSubmit();
-        }
-
-        void OnSubmit()
-        {            
-            FormData formData = view.GetFormData();
-            ValidationResult validationResult = model.ValidateFormData(formData);
+            FormData formData = view.FormData;
+            EmailData emailData = view.EmailData;
+            FormValidationResult validationResult = model.ValidateFormData(formData, emailData);
 
             view.ClearValidationError();
 
             if (validationResult.IsValid == false)
             {
-                ShowValidationError(validationResult); // Determines the message and shows it on the View
+                view.DisplayValidationResult(validationResult.Messages); // Determines the message and shows it on the View
                 return;
             }
 
             Pdf pdf = model.GeneratePdf(formData);
 
-            string email = view.GetEmail();
+            EmailSendingResult sendingResult = model.EmailFile(emailData, pdf);
 
-            if (!model.ValidateEmail(email))
-            {
-                ShowEmailError(email); // Determines the message and shows it on the view
-                return;
-            }
-
-            model.EmailFile(view.GetSmtpHost(), email, pdf);
-        }
-
-        private void ShowValidationError(ValidationResult result)
-        {
-            view.DisplayValidationResult("data form incorrect!");
-        }
-
-        private void ShowEmailError(string email)
-        {
-            view.DisplayEmailError("email address is incorrect!");
+            view.DisplayEmailError(sendingResult.Message);
         }
     }
 }

@@ -14,46 +14,45 @@ namespace PresenterFirstExample1.View
 {
     public partial class FormView : Form, IFormView
     {
+        public FormData FormData { get { return new FormData(firstNameTextBox.Text, lastNameTextBox.Text, commentsTextBox.Text); } }
+        public EmailData EmailData { get { return new EmailData( emailTextBox.Text, smtpTextBox.Text); } }
+
+        public event EventHandler SubmitButtonClick;
+
         public FormView()
         {
             InitializeComponent();
-
-            formDataError.ForeColor = Color.Red;
-            emailError.ForeColor = Color.Red;
+            this.submitButton.Click += OnSubmitButtonClick;
         }
 
-        public event EventHandler SubmitButtonClick { add { this.submitButton.Click += new EventHandler(value); } remove { this.submitButton.Click -= new EventHandler(value); } }
-     
-        public FormData GetFormData()
+        private void OnSubmitButtonClick(object sender, EventArgs e)
         {
-            return new FormData(firstNameTextBox.Text, lastNameTextBox.Text, emailTextBox.Text, smtpTextBox.Text);
+            SubmitButtonClick.Invoke(sender, EventArgs.Empty);
         }
 
-        public string GetEmail()
+        public void DisplayValidationResult(IEnumerable<string> errorMessage)
         {
-            return emailTextBox.Text;
+            validationErrors.DataSource = errorMessage;
         }
 
-        public string GetSmtpHost()
+        public void DisplayEmailError(string error)
         {
-            return smtpTextBox.Text;
-        }
-
-        public void DisplayValidationResult(string errorMessage)
-        {
-            formDataError.Text = errorMessage;
-        }
-
-
-        public void DisplayEmailError(string text)
-        {
-            emailError.Text = text;
+            sendingErrors.Text = error;
         }
 
         public void ClearValidationError()
         {
-            formDataError.Text = string.Empty;
-            emailError.Text = string.Empty;
+            validationErrors.DataSource = new List<string>();
+            sendingErrors.Text = string.Empty;
+        }       
+
+        private void FormView_Load(object sender, EventArgs e)
+        {
+            firstNameTextBox.Text = "John";
+            lastNameTextBox.Text = "Smith";
+            commentsTextBox.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+            emailTextBox.Text = "gadamczyk@mops.katowice.pl";
+            smtpTextBox.Text = "mail.mops.katowice.pl";
         }
     }
 }

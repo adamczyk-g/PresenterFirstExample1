@@ -19,11 +19,10 @@ namespace PresenterFirstExample1.View
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            INameValidator nameValidator = new NameValidator();
-            IEmailValidator emailValidator = new SystemNetEmailValidator();
-
+            IFormValidator formValidator = new FormValidator();
+            
             IFormView view = new FormView();
-            IFormModel model = new FormModel(emailValidator, nameValidator);
+            IFormModel model = new FormModel(formValidator);
             FormPresenter prezenter = new FormPresenter(view, model);
 
             Application.Run((Form)view);

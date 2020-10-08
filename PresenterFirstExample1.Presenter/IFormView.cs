@@ -9,12 +9,11 @@ namespace PresenterFirstExample1.Presenter
 {
     public interface IFormView
     {
-        FormData GetFormData();
-        string GetEmail();
-        void DisplayValidationResult(string errorMessage);
-        event EventHandler SubmitButtonClick;
+        FormData FormData { get; }
+        EmailData EmailData { get; }
+        void DisplayValidationResult(IEnumerable<string> errorMessage);
         void DisplayEmailError(string text);
         void ClearValidationError();
-        string GetSmtpHost();
+        event EventHandler SubmitButtonClick;
     }
 }
