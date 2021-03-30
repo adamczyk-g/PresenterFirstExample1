@@ -8,7 +8,7 @@ namespace PresenterFirstExample1.Model
 {
     public class Result
     {
-        public FormValidationResult FormValidationResult()
+        public Notification FormValidationResult()
         {
             throw new NotImplementedException();
         }

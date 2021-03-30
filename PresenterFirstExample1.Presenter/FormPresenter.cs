@@ -30,11 +30,11 @@ namespace PresenterFirstExample1.Presenter
         {
             FormData formData = view.FormData;
             EmailData emailData = view.EmailData;
-            FormValidationResult validationResult = model.ValidateForm(formData, emailData);
+            Notification validationResult = model.ValidateForm(formData, emailData);
 
             view.ClearValidationError();
 
-            if (validationResult.IsValid == false)
+            if (validationResult.HasErrors)
             {
                 view.DisplayValidationResult(validationResult.Messages); // Determines the message and shows it on the View
                 return;

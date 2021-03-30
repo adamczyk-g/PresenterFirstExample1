@@ -4,9 +4,9 @@ namespace PresenterFirstExample1.Model
 {
     public class FormValidator: IFormValidator
     {
-        public FormValidationResult Validate(FormData formData, EmailData emailData)
+        public Notification Validate(FormData formData, EmailData emailData)
         {
-            FormValidationResult result = new FormValidationResult();
+            Notification result = new Notification();
 
             string message = string.Empty;
 

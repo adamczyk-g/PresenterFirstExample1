@@ -3,17 +3,17 @@ using System.Collections.ObjectModel;
 
 namespace PresenterFirstExample1.Model
 {
-    public class FormValidationResult
+    public class Notification
     {
         private readonly List<string> messages;
 
-        public FormValidationResult()
+        public Notification()
         {
             messages = new List<string>();
         }
 
         public void AddMessage(string message) { messages.Add(message); }
-        public bool IsValid { get { return messages.Count == 0; } }
+        public bool HasErrors { get { return messages.Count != 0; } }
         public IEnumerable<string> Messages { get { return new ReadOnlyCollection<string>(messages); } }
     };
 }

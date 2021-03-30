@@ -2,6 +2,6 @@
 {
     public interface IFormValidator
     {
-        FormValidationResult Validate(FormData formData, EmailData emailData);
+        Notification Validate(FormData formData, EmailData emailData);
     }
 }

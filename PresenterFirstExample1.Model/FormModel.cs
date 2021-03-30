@@ -22,7 +22,7 @@ namespace PresenterFirstExample1.Model
             this.formValidator = formValidator;
         }
 
-        public FormValidationResult ValidateForm(FormData formData, EmailData emailData)
+        public Notification ValidateForm(FormData formData, EmailData emailData)
         {
             return formValidator.Validate(formData, emailData);
         }
