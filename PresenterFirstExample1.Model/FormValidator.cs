@@ -4,6 +4,11 @@ namespace PresenterFirstExample1.Model
 {
     public class FormValidator: IFormValidator
     {
+        private readonly EmailValidator emailValidator;
+        public FormValidator(EmailValidator emailValidator) 
+        {
+            this.emailValidator = emailValidator;
+        }
         public Notification Validate(FormData formData, EmailData emailData)
         {
             Notification result = new Notification();
@@ -13,15 +18,10 @@ namespace PresenterFirstExample1.Model
             if (!FirstNameValidator(formData.FirstName)) result.AddMessage("First name is invalid!");
             if (!LastNameValidator(formData.LastName)) result.AddMessage("Last name is invalid!");
             if (!CommentsValidator(formData.Comments)) result.AddMessage("Comments are invalid!");
-            if (!EmailValidator(emailData.ToAddress)) result.AddMessage("Email address is invalid!");
+            if (!emailValidator.Validate(emailData.ToAddress)) result.AddMessage("Email address is invalid!");
             if (!SmtpHostValidator(emailData.SmtpHost)) result.AddMessage("Smtp host is invalid!");
 
             return result;
-        }        
-
-        private bool EmailValidator(string email)
-        {
-            return Regex.Match(email, @"^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$").Success;
         }
 
         bool FirstNameValidator(string firstName)

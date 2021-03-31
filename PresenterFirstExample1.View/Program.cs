@@ -19,7 +19,8 @@ namespace PresenterFirstExample1.View
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            IFormValidator formValidator = new FormValidator();
+            EmailValidator emailValidator = new Model.EmailValidator();
+            IFormValidator formValidator = new FormValidator(emailValidator);
             
             IFormView view = new FormView();
             IFormModel model = new FormModel(formValidator);
