@@ -2,7 +2,7 @@
 
 namespace PresenterFirstExample1.Model
 {
-    public class EmailValidator
+    public class SimpleEmailValidator
     {
         public bool Validate(string email)
         {

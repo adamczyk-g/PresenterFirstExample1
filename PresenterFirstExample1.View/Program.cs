@@ -19,7 +19,7 @@ namespace PresenterFirstExample1.View
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            EmailValidator emailValidator = new Model.EmailValidator();
+            SimpleEmailValidator emailValidator = new Model.SimpleEmailValidator();
             IFormValidator formValidator = new FormValidator(emailValidator);
             
             IFormView view = new FormView();

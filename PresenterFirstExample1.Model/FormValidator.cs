@@ -4,8 +4,8 @@ namespace PresenterFirstExample1.Model
 {
     public class FormValidator: IFormValidator
     {
-        private readonly EmailValidator emailValidator;
-        public FormValidator(EmailValidator emailValidator) 
+        private readonly SimpleEmailValidator emailValidator;
+        public FormValidator(SimpleEmailValidator emailValidator) 
         {
             this.emailValidator = emailValidator;
         }
