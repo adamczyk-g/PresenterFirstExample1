@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace PresenterFirstExample1.Model.Tests
 {
     [TestFixture]
-    public class EmailValidatorTests
+    public class SimpleEmailValidatorTests
     {
         [TestCase("abc@abc.com")]
         [TestCase("abc.abc@abc.com")]
@@ -17,7 +17,7 @@ namespace PresenterFirstExample1.Model.Tests
         [TestCase("abc_abc@abc.com")]
         public void Correct_email_address_test(string email)
         {
-            SimpleEmailValidator sut = new SimpleEmailValidator();
+            EmailValidator sut = new SimpleEmailValidator();
             Assert.AreEqual(true, sut.Validate(email));
         }
         [TestCase("address_without_at.com")]
@@ -26,7 +26,7 @@ namespace PresenterFirstExample1.Model.Tests
         [TestCase("too_long_user_name_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@abc.com")]
         public void Incorrect_email_address_test(string email)
         {
-            SimpleEmailValidator sut = new SimpleEmailValidator();
+            EmailValidator sut = new SimpleEmailValidator();
             Assert.AreEqual(false, sut.Validate(email));
         }
     }
