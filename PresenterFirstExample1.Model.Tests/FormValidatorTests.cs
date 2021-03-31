@@ -5,104 +5,49 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Moq;
 
 namespace PresenterFirstExample1.Model.Tests
 {
     [TestFixture]
     public class FormValidatorTests
     {
-        [Test]
-        public void Form_validator_with_proper_data_return_no_errors()
+        private Mock<EmailValidator> emailValidator;
+
+        [SetUp]
+        public void Setup()
+        {
+            emailValidator = new Mock<EmailValidator>();
+        }               
+
+        [TestCase("ProperFirstName", "ProperLastName", "proper comment", "some@email.address", "proper.host.name", new object[] {  }, false)]
+        [TestCase("unproperFirstName", "ProperLastName", "proper comment", "some@email.address", "proper.host.name", new object[] { "First name is invalid!" }, true)]
+        [TestCase("ProperFirstName", "unpoperLastName", "proper comment", "some@email.address", "proper.host.name", new object[] { "Last name is invalid!" }, true)]
+        [TestCase("ProperFirstName", "ProperLastName", "proper comment", "some@email.address", "", new object[] { "Smtp host is invalid!" }, true)]
+        [TestCase("unproperFirstName", "unproperLastName", "proper comment", "some@email.address", "proper.host.name", new object[] { "First name is invalid!" , "Last name is invalid!" }, true)]
+        [TestCase("unproperFirstName", "unproperLastName", "proper comment", "some@email.address", "", new object[] { "First name is invalid!", "Last name is invalid!", "Smtp host is invalid!" }, true)]
+
+        public void Form_validator_with_correct_email_address_and_incorrect_other_data_return_errors(
+            string firstName, 
+            string lastName, 
+            string comment,
+            string emailAddress,
+            string smtpHost,
+            Object[] expectedMessage,
+            bool hasErrors)
         {
             //arrange
-            FormData formData = new FormData("ProperFirstName", "ProperLastName", "proper comment");
-            EmailData emailData = new EmailData("gadamczyk@gmail.com", "smtp.host.name");
-            IEnumerable<string> expected = new List<string>() { };
-            IFormValidator sut = new FormValidator();
+            FormData formData = new FormData(firstName, lastName, comment);
+            EmailData emailData = new EmailData(emailAddress, smtpHost);
+            emailValidator.Setup(m => m.Validate("some@email.address")).Returns(true);
+            IFormValidator sut = new FormValidator(emailValidator.Object);
 
             //act
             Notification notification = sut.Validate(formData, emailData);
 
             //assert
-            CollectionAssert.AreEquivalent(expected, notification.Messages);
-            Assert.AreEqual(false, notification.HasErrors);
-        }
-
-        [Test]
-        public void Form_validator_with_incorrect_first_name_return_errors()
-        {
-            //arrange
-            FormData formData = new FormData("incorrectFirstName", "ProperLastName", "proper comment");
-            EmailData emailData = new EmailData("proper@email.address", "smtp.host.name");
-            IEnumerable<string> expected = new List<string>() {
-            "First name is invalid!"
-            };
-            IFormValidator sut = new FormValidator();
-
-            //act
-            Notification notification = sut.Validate(formData, emailData);
-
-            //assert
-            CollectionAssert.AreEquivalent(expected, notification.Messages);
-            Assert.AreEqual(true, notification.HasErrors);
-        }
-
-        [Test]
-        public void Form_validator_with_incorrect_last_name_return_errors()
-        {
-            //arrange
-            FormData formData = new FormData("ProperFirstName", "inncorectLastName", "proper comment");
-            EmailData emailData = new EmailData("proper@email.address", "smtp.host.name");
-            IEnumerable<string> expected = new List<string>() {
-            "Last name is invalid!"
-            };
-            IFormValidator sut = new FormValidator();
-
-            //act
-            Notification notification = sut.Validate(formData, emailData);
-
-            //assert
-            CollectionAssert.AreEquivalent(expected, notification.Messages);
-            Assert.AreEqual(true, notification.HasErrors);
-        }
-
-
-        [Test]
-        public void Form_validator_with_incorrect_email_address_return_errors()
-        {
-            //arrange
-            FormData formData = new FormData("ProperFirstName", "ProperLastName", "proper comment");
-            EmailData emailData = new EmailData("emailAddressWithoutAt.com", "smtp.host.name");
-            IEnumerable<string> expected = new List<string>() {
-            "Email address is invalid!"
-            };
-            IFormValidator sut = new FormValidator();
-
-            //act
-            Notification notification = sut.Validate(formData, emailData);
-
-            //assert
-            CollectionAssert.AreEquivalent(expected, notification.Messages);
-            Assert.AreEqual(true, notification.HasErrors);
-        }
-
-        [Test]
-        public void Form_validator_with_incorrect_email_address_return_errors1()
-        {
-            //arrange
-            FormData formData = new FormData("ProperFirstName", "ProperLastName", "proper comment");
-            EmailData emailData = new EmailData("email@AddressWithoutDoamin", "smtp.host.name");
-            IEnumerable<string> expected = new List<string>() {
-            "Email address is invalid!"
-            };
-            IFormValidator sut = new FormValidator();
-
-            //act
-            Notification notification = sut.Validate(formData, emailData);
-
-            //assert
-            CollectionAssert.AreEquivalent(expected, notification.Messages);
-            Assert.AreEqual(true, notification.HasErrors);
+            CollectionAssert.AreEquivalent(expectedMessage, notification.Messages.ToArray());
+            Assert.AreEqual(hasErrors, notification.HasErrors);
         }
     }
 }
