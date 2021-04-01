@@ -42,6 +42,8 @@
             this.commentsTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.sendingErrors = new System.Windows.Forms.RichTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -160,11 +162,31 @@
             this.sendingErrors.TabIndex = 16;
             this.sendingErrors.Text = "";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 348);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "validation errors";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(243, 348);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "sending errors";
+            // 
             // FormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 550);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.sendingErrors);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.commentsTextBox);
@@ -203,6 +225,8 @@
         private System.Windows.Forms.RichTextBox commentsTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox sendingErrors;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
